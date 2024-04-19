@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -105,7 +107,7 @@ public class FPSController : MonoBehaviour
         if (equippedGuns.Count == 0)
             return;
 
-        if(Input.GetAxis("Mouse ScrollWheel") > 0)
+        if(Input.GetAxis("Mouse ScrollWheel") > 0) // How
         {
             gunIndex++;
             if (gunIndex > equippedGuns.Count - 1)
@@ -193,34 +195,54 @@ public class FPSController : MonoBehaviour
 
     // Input methods
 
+    //bool GetPressFire()
+    //{
+    //  return Input.GetButtonDown("Fire1");
+    //}
+
+    //bool GetHoldFire()
+    //{
+    //return Input.GetButton("Fire1");
+    //}
+
+    //bool GetPressAltFire()
+    //{
+    //return Input.GetButtonDown("Fire2");
+    //}
+
     bool GetPressFire()
     {
-        return Input.GetButtonDown("Fire1");
+        return OnFire();
     }
 
     bool GetHoldFire()
     {
-        return Input.GetButton("Fire1");
+        return OnFireHold();
     }
 
     bool GetPressAltFire()
     {
-        return Input.GetButtonDown("Fire2");
+        return OnFireAlt();
     }
 
-    Vector2 GetPlayerMovementVector()
+    Vector2 GetPlayerMovementVector() // How
     {
         return new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
     }
 
-    Vector2 GetPlayerLook()
+    Vector2 GetPlayerLook() // How
     {
         return new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
     }
 
+    //bool GetSprint()
+    //{
+        //return Input.GetButton("Sprint");
+    //}
+
     bool GetSprint()
     {
-        return Input.GetButton("Sprint");
+        return OnSprint();
     }
 
     // Collision methods
@@ -245,5 +267,40 @@ public class FPSController : MonoBehaviour
     {
         if(grounded)
             velocity.y += Mathf.Sqrt (jumpForce * -1 * gravity);
+    }
+
+    public bool OnSprint()
+    {
+        if(Keyboard.current.leftShiftKey.isPressed || Gamepad.current.rightStickButton.isPressed)
+            return true;
+        return false;
+    }
+
+    public bool OnFire()
+    {
+        if(Mouse.current.leftButton.wasPressedThisFrame || Gamepad.current.rightTrigger.wasPressedThisFrame)
+                return true;
+        return false;
+    }
+
+    public bool OnFireHold()
+    {
+        if (Mouse.current.leftButton.isPressed || Gamepad.current.rightTrigger.isPressed)
+            return true;
+        return false;
+    }
+
+    public bool OnFireAlt()
+    {
+        if(Mouse.current.rightButton.wasPressedThisFrame || Gamepad.current.leftTrigger.wasPressedThisFrame)
+            return false;
+        return true;
+    }
+
+    public bool OnFireAltHold()
+    {
+        if(Mouse.current.rightButton.isPressed || Gamepad.current.leftTrigger.isPressed)
+            return true;
+        return false;
     }
 }
