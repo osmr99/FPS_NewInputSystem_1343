@@ -28,6 +28,12 @@ public class FPSController : MonoBehaviour
     List<Gun> equippedGuns = new List<Gun>();
     int gunIndex = 0;
     Gun currentGun = null;
+    bool isSprinting = false;
+    bool isFiring = false;
+    bool isFiringHold = false;
+    bool isAltFiring = false;
+    bool isAltFiringHold = false;
+    
 
     // properties
     public GameObject Cam { get { return cam; } }
@@ -76,11 +82,11 @@ public class FPSController : MonoBehaviour
 
         Vector2 movement = GetPlayerMovementVector();
         Vector3 move = transform.right * movement.x + transform.forward * movement.y;
-        controller.Move(move * movementSpeed * (GetSprint() ? 2 : 1) * Time.deltaTime);
+        controller.Move(move * movementSpeed * (isSprinting ? 2 : 1) * Time.deltaTime);
 
         //if (Input.GetButtonDown("Jump") && grounded)
         //{
-            //velocity.y += Mathf.Sqrt (jumpForce * -1 * gravity);
+        //velocity.y += Mathf.Sqrt (jumpForce * -1 * gravity);
         //}
 
         velocity.y += gravity * Time.deltaTime;
@@ -126,7 +132,7 @@ public class FPSController : MonoBehaviour
         }
     }
 
-    void FireGun()
+    /*void FireGun()
     {
         // don't fire if we don't have a gun
         if (currentGun == null)
@@ -150,6 +156,34 @@ public class FPSController : MonoBehaviour
         {
             currentGun?.AttemptAltFire();
         }
+    }*/
+
+    void FireGun()
+    {
+        // don't fire if we don't have a gun
+        if (currentGun == null)
+            return;
+
+        // pressed the fire button
+        if(isFiring)
+        {
+            currentGun?.AttemptFire();
+            isFiring = !isFiring;
+        }
+
+        // holding the fire button (for automatic)
+        else if(isFiringHold)
+        {
+            if (currentGun.AttemptAutomaticFire())
+                currentGun?.AttemptFire();
+        }
+
+        // pressed the alt fire button
+        if (isAltFiring)
+        {
+            currentGun?.AttemptAltFire();
+            isAltFiring = !isAltFiring;
+        }
     }
 
     void EquipGun(Gun g)
@@ -167,6 +201,11 @@ public class FPSController : MonoBehaviour
         currentGun = g;
 
         g.Equip(this);
+
+        isFiring = false;
+        isFiringHold = false;
+        isAltFiring = false;
+        isAltFiringHold = false;
     }
 
     // public methods
@@ -210,20 +249,25 @@ public class FPSController : MonoBehaviour
     //return Input.GetButtonDown("Fire2");
     //}
 
-    bool GetPressFire()
-    {
-        return OnFire();
-    }
+    //bool GetPressFire()
+    //{
+    //    return OnFire();
+    //}
 
-    bool GetHoldFire()
-    {
-        return OnFireHold();
-    }
+    //bool GetHoldFire()
+    //{
+    //    return OnFireHold();
+    //}
 
-    bool GetPressAltFire()
-    {
-        return OnFireAlt();
-    }
+    //bool GetPressAltFire()
+    //{
+    //    return OnFireAlt();
+    //}
+
+    //Vector2 GetPlayerMovementVector() // How
+    //{
+
+    //}
 
     Vector2 GetPlayerMovementVector() // How
     {
@@ -240,10 +284,11 @@ public class FPSController : MonoBehaviour
         //return Input.GetButton("Sprint");
     //}
 
-    bool GetSprint()
-    {
-        return OnSprint();
-    }
+    //bool GetSprint()
+    //{
+    //    //return OnSprint();
+    //    return true;
+    //}
 
     // Collision methods
 
@@ -269,38 +314,33 @@ public class FPSController : MonoBehaviour
             velocity.y += Mathf.Sqrt (jumpForce * -1 * gravity);
     }
 
-    public bool OnSprint()
+    public void OnSprint()
     {
-        if(Keyboard.current.leftShiftKey.isPressed || Gamepad.current.rightStickButton.isPressed)
-            return true;
-        return false;
+        isSprinting = !isSprinting;
     }
 
-    public bool OnFire()
+    public void OnFire()
     {
-        if(Mouse.current.leftButton.wasPressedThisFrame || Gamepad.current.rightTrigger.wasPressedThisFrame)
-                return true;
-        return false;
+        isFiring = true;
     }
 
-    public bool OnFireHold()
+    public void OnFireHold()
     {
-        if (Mouse.current.leftButton.isPressed || Gamepad.current.rightTrigger.isPressed)
-            return true;
-        return false;
+        isFiringHold = !isFiringHold;
     }
 
-    public bool OnFireAlt()
+    public void OnFireAlt()
     {
-        if(Mouse.current.rightButton.wasPressedThisFrame || Gamepad.current.leftTrigger.wasPressedThisFrame)
-            return false;
-        return true;
+        isAltFiring = true;
     }
 
-    public bool OnFireAltHold()
+    public void OnFireAltHold()
     {
-        if(Mouse.current.rightButton.isPressed || Gamepad.current.leftTrigger.isPressed)
-            return true;
-        return false;
+        isAltFiringHold = !isAltFiringHold;
+    }
+
+    public Vector2 OnMovement(InputValue value)
+    {
+        return value.Get<Vector2>();
     }
 }

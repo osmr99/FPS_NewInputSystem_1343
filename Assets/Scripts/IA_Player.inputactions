@@ -15,12 +15,21 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Movement",
+                    "type": "Value",
+                    "id": "9108f98e-dd37-4f40-9a5c-65c4402a921d",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "Sprint",
                     "type": "Button",
                     "id": "4a81dbe8-183a-4205-b93b-5042b4eca238",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Hold(duration=0.01,pressPoint=0.01)",
+                    "interactions": "Press(pressPoint=0.01,behavior=2)",
                     "initialStateCheck": false
                 },
                 {
@@ -47,7 +56,7 @@
                     "id": "b3831b53-f500-4dea-bdce-05d482403566",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Hold(duration=0.01,pressPoint=0.01)",
+                    "interactions": "Press(pressPoint=0.01,behavior=2)",
                     "initialStateCheck": false
                 },
                 {
@@ -56,7 +65,7 @@
                     "id": "4d43de46-d720-4492-a64b-af02ad2ff3ff",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press(pressPoint=0.01,behavior=2)",
                     "initialStateCheck": false
                 }
             ],
@@ -192,6 +201,116 @@
                     "action": "FireAltHold",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "Keyboard",
+                    "id": "fc55ea12-2ef2-4eed-a01f-4cea292e79d0",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "de52c3ff-39b5-4c46-856d-03b56511172c",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "8ff5e036-f0f7-4d33-ba8d-265db5d27e98",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "596d9dc7-08f0-48a9-b754-9e346768aadd",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "ae784c66-f362-4a66-ae00-719ecdd6c5f0",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Gamepad",
+                    "id": "8cd0b896-6f4b-4d40-be47-6614885a7eda",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "ad655ab4-824e-4bda-b9b6-8e94d1ee3c2d",
+                    "path": "<Gamepad>/leftStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "8153339a-b095-4ce1-b863-d087331fc114",
+                    "path": "<Gamepad>/leftStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "bec6bfe7-c9d4-45dd-a479-e9f4b898a5a0",
+                    "path": "<Gamepad>/leftStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "782b9fcc-dedb-4b9d-b890-97f324f1a1a5",
+                    "path": "<Gamepad>/leftStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }
