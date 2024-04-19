@@ -24,6 +24,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Look",
+                    "type": "Value",
+                    "id": "95274edf-7bf8-4bb7-a8e4-bb2634f0dc28",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "Sprint",
                     "type": "Button",
                     "id": "4a81dbe8-183a-4205-b93b-5042b4eca238",
@@ -54,15 +63,6 @@
                     "name": "FireHold",
                     "type": "Button",
                     "id": "b3831b53-f500-4dea-bdce-05d482403566",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press(pressPoint=0.01,behavior=2)",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "FireAltHold",
-                    "type": "Button",
-                    "id": "4d43de46-d720-4492-a64b-af02ad2ff3ff",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press(pressPoint=0.01,behavior=2)",
@@ -181,28 +181,6 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "aefc715b-0956-4b7c-a8bf-e8c67e6756d6",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "FireAltHold",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f7d89b8c-47a2-4499-8979-153cc84901ed",
-                    "path": "<Gamepad>/leftTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "FireAltHold",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
                     "name": "Keyboard",
                     "id": "fc55ea12-2ef2-4eed-a01f-4cea292e79d0",
                     "path": "2DVector",
@@ -311,6 +289,28 @@
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "b1ba309f-92cb-42c7-9c34-2f4938bf20b0",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ef094418-5db4-4c35-89c6-b59a5b8a245d",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

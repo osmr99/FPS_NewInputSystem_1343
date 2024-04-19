@@ -29,11 +29,10 @@ public class FPSController : MonoBehaviour
     int gunIndex = 0;
     Gun currentGun = null;
     bool isSprinting = false;
-    bool isFiring = false;
     bool isFiringHold = false;
-    bool isAltFiring = false;
-    bool isAltFiringHold = false;
-    
+    Vector2 movement;
+    Vector2 looking;
+
 
     // properties
     public GameObject Cam { get { return cam; } }
@@ -80,7 +79,7 @@ public class FPSController : MonoBehaviour
             velocity.y = -1;// -0.5f;
         }
 
-        Vector2 movement = GetPlayerMovementVector();
+        //movement = GetPlayerMovementVector();
         Vector3 move = transform.right * movement.x + transform.forward * movement.y;
         controller.Move(move * movementSpeed * (isSprinting ? 2 : 1) * Time.deltaTime);
 
@@ -96,7 +95,7 @@ public class FPSController : MonoBehaviour
 
     void Look()
     {
-        Vector2 looking = GetPlayerLook();
+        //looking = GetPlayerLook();
         float lookX = looking.x * lookSensitivityX * Time.deltaTime;
         float lookY = looking.y * lookSensitivityY * Time.deltaTime;
 
@@ -164,26 +163,32 @@ public class FPSController : MonoBehaviour
         if (currentGun == null)
             return;
 
-        // pressed the fire button
-        if(isFiring)
-        {
-            currentGun?.AttemptFire();
-            isFiring = !isFiring;
-        }
-
-        // holding the fire button (for automatic)
-        else if(isFiringHold)
+        if(isFiringHold)
         {
             if (currentGun.AttemptAutomaticFire())
                 currentGun?.AttemptFire();
         }
 
+        // pressed the fire button
+        //if(isFiring)
+        //{
+        //    currentGun?.AttemptFire();
+            
+        //}
+
+        // holding the fire button (for automatic)
+        //else if(isFiringHold)
+        //{
+        //    if (currentGun.AttemptAutomaticFire())
+        //        currentGun?.AttemptFire();
+        //}
+
         // pressed the alt fire button
-        if (isAltFiring)
-        {
-            currentGun?.AttemptAltFire();
-            isAltFiring = !isAltFiring;
-        }
+        //if (isAltFiring)
+        //{
+        //    currentGun?.AttemptAltFire();
+        //    isAltFiring = !isAltFiring;
+        //}
     }
 
     void EquipGun(Gun g)
@@ -201,11 +206,6 @@ public class FPSController : MonoBehaviour
         currentGun = g;
 
         g.Equip(this);
-
-        isFiring = false;
-        isFiringHold = false;
-        isAltFiring = false;
-        isAltFiringHold = false;
     }
 
     // public methods
@@ -269,15 +269,15 @@ public class FPSController : MonoBehaviour
 
     //}
 
-    Vector2 GetPlayerMovementVector() // How
-    {
-        return new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-    }
+    //Vector2 GetPlayerMovementVector() // How
+    //{
+        //return new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+    //}
 
-    Vector2 GetPlayerLook() // How
-    {
-        return new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
-    }
+    //Vector2 GetPlayerLook() // How
+    //{
+        //return new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+    //}
 
     //bool GetSprint()
     //{
@@ -321,7 +321,7 @@ public class FPSController : MonoBehaviour
 
     public void OnFire()
     {
-        isFiring = true;
+        currentGun?.AttemptFire();
     }
 
     public void OnFireHold()
@@ -331,16 +331,16 @@ public class FPSController : MonoBehaviour
 
     public void OnFireAlt()
     {
-        isAltFiring = true;
+        currentGun?.AttemptAltFire();
     }
 
-    public void OnFireAltHold()
+    public void OnMovement(InputValue value)
     {
-        isAltFiringHold = !isAltFiringHold;
+        movement = value.Get<Vector2>();
     }
 
-    public Vector2 OnMovement(InputValue value)
+    public void OnLook(InputValue value)
     {
-        return value.Get<Vector2>();
+        looking = value.Get<Vector2>();
     }
 }
