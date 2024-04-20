@@ -34,7 +34,7 @@ public class FPSController : MonoBehaviour
     // public variables
     public Gun currentGun = null;
     public List<Gun> equippedGuns = new List<Gun>();
-    public int gunIndex = 0;
+    public int gunIndex = -1;
     [SerializeField] public int damage = 20;
 
     // properties

@@ -6389,8 +6389,9 @@ MonoBehaviour:
   lookSensitivityY: 25
   gravity: -20
   jumpForce: 5
+  currentGun: {fileID: 0}
   equippedGuns: []
-  gunIndex: 0
+  gunIndex: -1
   damage: 20
   takingDamage:
     m_PersistentCalls:
