@@ -196,7 +196,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: GamepadOnly
+  m_DefaultActionMap: 81f89505-7627-46a0-b2bb-b56d8ba5acd3
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!1 &11768568
@@ -2013,6 +2013,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   subtitles: {fileID: 582794437}
+  gameOverSubtitles: {fileID: 1305791870}
 --- !u!4 &642416567
 Transform:
   m_ObjectHideFlags: 0
@@ -3085,8 +3086,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.1951, y: -413.8049}
-  m_SizeDelta: {x: 1831.2571, y: 88.0133}
+  m_AnchoredPosition: {x: -0.000022411, y: -454.84}
+  m_SizeDelta: {x: 1837.8408, y: 170.09}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1305791868
 MonoBehaviour:
@@ -3151,7 +3152,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -3197,6 +3198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2e46cd777facd04987a20c6bf3bab8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  captions: {fileID: 1305791868}
 --- !u!1 &1326836939
 GameObject:
   m_ObjectHideFlags: 0

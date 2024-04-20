@@ -21,7 +21,10 @@ public class PauseHandler : MonoBehaviour
             if (paused)
                 SceneManager.LoadScene("PauseMenu", LoadSceneMode.Additive);
             else if (!paused)
+            {
                 SceneManager.UnloadSceneAsync("PauseMenu");
+                FindObjectOfType<FPSController>().mouseLock = true;
+            }    
         }
     }
 

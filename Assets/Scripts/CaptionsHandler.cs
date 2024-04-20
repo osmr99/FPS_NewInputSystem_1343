@@ -22,6 +22,7 @@ public class CaptionsHandler : MonoBehaviour
         captions.color = color;
         lifetime = solidDuration;
         fading = fadingDuration;
+        captions.characterSpacing = 6;
     }
 
     private void FixedUpdate() // It updates 50 times per second.
@@ -29,11 +30,13 @@ public class CaptionsHandler : MonoBehaviour
         if (lifetime > 0)
         {
             lifetime--;
+            captions.characterSpacing -= 0.04f;
         }
         else if(lifetime == 0 && fading > 0)
         {
             captions.color = new Color(captionsColor.r,captionsColor.g, captionsColor.b, (float)fading / 100 * 0.99f);
             fading--;
+            captions.characterSpacing -= 0.04f;
         }
     }
 }

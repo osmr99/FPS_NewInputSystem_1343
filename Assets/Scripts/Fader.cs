@@ -54,6 +54,7 @@ public class Fader : MonoBehaviour
         {
             targetColor = Color.black;
             currentColor = Color.Lerp(currentColor, targetColor, fadeSpeed * Time.deltaTime);
+            Cursor.lockState = CursorLockMode.None;
         }
 
 

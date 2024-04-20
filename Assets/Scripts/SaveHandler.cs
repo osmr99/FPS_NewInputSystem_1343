@@ -10,6 +10,7 @@ using TMPro;
 public class SaveHandler : MonoBehaviour
 {
     [SerializeField] CaptionsHandler subtitles;
+    [SerializeField] GameOverCaptions gameOverSubtitles;
     string path;
     string saved = "Successfully saved!";
     string loaded = "Sucessfully loaded!";
@@ -59,7 +60,7 @@ public class SaveHandler : MonoBehaviour
             }
         }
         else
-            subtitles.displayCaptions(saveAttempt, 200, 150, Color.magenta);
+            gameOverSubtitles.displayCaptions(saveAttempt, 200, 150, Color.magenta);
     }
 
     public void OnLoad()
@@ -94,7 +95,7 @@ public class SaveHandler : MonoBehaviour
             }
         }
         else
-            subtitles.displayCaptions(cannotLoad, 100, 150, Color.gray);
+            gameOverSubtitles.displayCaptions(cannotLoad, 100, 150, Color.gray);
     }
 
     public void OnDelete()
@@ -113,7 +114,7 @@ public class SaveHandler : MonoBehaviour
             }
         }
         else
-            subtitles.displayCaptions(badIdea, 200, 150, Color.magenta);
+            gameOverSubtitles.displayCaptions(badIdea, 200, 150, Color.magenta);
     }
 }
 [System.Serializable]

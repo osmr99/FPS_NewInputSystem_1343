@@ -5,6 +5,7 @@ using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class FPSController : MonoBehaviour
 {
@@ -31,12 +32,14 @@ public class FPSController : MonoBehaviour
     bool isFiringHold = false;
     Vector2 movement;
     Vector2 looking;
+    
 
     // public variables
     
     public List<Gun> equippedGuns = new List<Gun>();
     public int gunIndex = -1;
     [SerializeField] public int damage = 20;
+    public bool mouseLock;
 
     // properties
     public GameObject Cam { get { return cam; } }
@@ -57,6 +60,7 @@ public class FPSController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
+        mouseLock = true;
 
         // start with a gun
         if(initialGun != null)
@@ -379,4 +383,21 @@ public class FPSController : MonoBehaviour
         }
 
     }
+
+    public void OnToggleMouseLock()
+    {
+        if (SceneManager.sceneCount == 1)
+        {
+            mouseLock = !mouseLock;
+            if (mouseLock)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+            else if (!mouseLock)
+            {
+                Cursor.lockState = CursorLockMode.None;
+            }
+        }
+    }
+
 }
