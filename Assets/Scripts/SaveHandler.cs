@@ -21,10 +21,14 @@ public class SaveHandler : MonoBehaviour
         if (Keyboard.current.zKey.wasPressedThisFrame)
         {
             SaveData sd = new SaveData();
+
             sd.playerPosition = FindObjectOfType<FPSController>().transform.position;
+            sd.playerHealth = FindObjectOfType<PlayerHUD>().health;
+            sd.healthBarFill = FindObjectOfType<PlayerHUD>().healthBar.fillAmount;
 
             string jsonText = JsonUtility.ToJson(sd);
             File.WriteAllText(path, jsonText);
+            Debug.Log("Sucessfully saved!");
         }
 
         if (Keyboard.current.xKey.wasPressedThisFrame)
@@ -32,12 +36,19 @@ public class SaveHandler : MonoBehaviour
             string saveText = File.ReadAllText(path);
             SaveData myData = JsonUtility.FromJson<SaveData>(saveText);
             FindObjectOfType<CharacterController>().enabled = false;
+
             FindObjectOfType<FPSController>().transform.position = myData.playerPosition;
+            FindObjectOfType<PlayerHUD>().health = myData.playerHealth;
+            FindObjectOfType<PlayerHUD>().healthBar.fillAmount = myData.healthBarFill;
+
             FindObjectOfType<CharacterController>().enabled = true;
+            Debug.Log("Sucessfully loaded!");
         }
     }
 }
 public class SaveData
 {
     public Vector3 playerPosition;
+    public float playerHealth;
+    public float healthBarFill;
 }

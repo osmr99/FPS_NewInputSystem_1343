@@ -33,10 +33,10 @@ public class Gun : MonoBehaviour
         elapsed += Time.deltaTime;
 
         // cheat code to refill ammo
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            AddAmmo(999);
-        }
+        //if (Input.GetKeyDown(KeyCode.R))
+        //{
+        //    AddAmmo(999);
+        //}
     }
 
     public virtual void Equip(FPSController p)

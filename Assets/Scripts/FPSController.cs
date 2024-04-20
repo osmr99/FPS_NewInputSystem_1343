@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor.VersionControl;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class FPSController : MonoBehaviour
@@ -33,10 +34,16 @@ public class FPSController : MonoBehaviour
     Vector2 movement;
     Vector2 looking;
 
+    [SerializeField] public int damage = 20;
 
     // properties
     public GameObject Cam { get { return cam; } }
-    
+
+    // Unity Events
+    public UnityAction interaction;
+    public UnityEvent<int> takingDamage;
+    public UnityEvent flashRed;
+
 
     private void Awake()
     {
@@ -61,7 +68,7 @@ public class FPSController : MonoBehaviour
     {
         Movement();
         Look();
-        HandleSwitchGun();
+        //HandleSwitchGun(); With the new input system, this method is not needed.
         FireGun();
 
         // always go back to "no velocity"
@@ -107,8 +114,8 @@ public class FPSController : MonoBehaviour
         transform.Rotate(Vector3.up * lookX);
     }
 
-    void HandleSwitchGun()
-    {
+    //void HandleSwitchGun()
+    //{
         //if (equippedGuns.Count == 0)
         //    return;
 
@@ -129,7 +136,7 @@ public class FPSController : MonoBehaviour
 
         //    EquipGun(equippedGuns[gunIndex]);
         //}
-    }
+    //}
 
     /*void FireGun()
     {
@@ -300,6 +307,8 @@ public class FPSController : MonoBehaviour
             var collisionPoint = hit.collider.ClosestPoint(transform.position);
             var knockbackAngle = (transform.position - collisionPoint).normalized;
             velocity = (20 * knockbackAngle);
+            takingDamage?.Invoke(damage);
+            flashRed?.Invoke();
         }
 
         if (hit.gameObject.GetComponent <KillZone>())

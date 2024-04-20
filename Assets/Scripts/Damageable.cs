@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class Damageable : MonoBehaviour
 {
+    [SerializeField] FPSController controller;
     [SerializeField] float maxHp = 100;
     public UnityEvent<Vector3> OnHit;
     [SerializeField] GameObject damageNumberPrefab;
@@ -25,7 +26,7 @@ public class Damageable : MonoBehaviour
     public void Hit(Vector3 knockback, float damageAmount)
     {
         //owner.ApplyKnockback(knockback);
-        OnHit.Invoke(knockback);//, damageAmount);
+        OnHit.Invoke(knockback);// damageAmount);
         TakeDamage(damageAmount);
     }
 
@@ -44,7 +45,8 @@ public class Damageable : MonoBehaviour
     {
         if (other.TryGetComponent(out FPSController FPSController))
         {
-            Debug.Log("Player got damage!");
+            //Debug.Log("Player got damage!");
+            controller.takingDamage?.Invoke(controller.damage / 4);
         }
     }
 }
