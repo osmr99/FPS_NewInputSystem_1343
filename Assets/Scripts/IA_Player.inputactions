@@ -620,7 +620,7 @@
                     "id": "ecf624d4-5930-45ca-b615-23e32573ab36",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "MultiTap(tapCount=3)",
+                    "interactions": "",
                     "initialStateCheck": false
                 }
             ],
