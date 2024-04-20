@@ -10,16 +10,18 @@ public class Shotgun : Gun
         if (!base.AttemptFire())
             return false;
 
-        var b = Instantiate(bulletPrefab, gunBarrelEnd.transform.position, gunBarrelEnd.rotation);
-        b.GetComponent<Projectile>().Initialize(20, 10, 0.1f, 25, null); // version without special effect
+        if (FindObjectOfType<PauseHandler>().paused == false)
+        {
+            var b = Instantiate(bulletPrefab, gunBarrelEnd.transform.position, gunBarrelEnd.rotation);
+            b.GetComponent<Projectile>().Initialize(20, 10, 0.1f, 25, null); // version without special effect
 
-        Instantiate(prefabShotgunBlast, gunBarrelEnd.transform.position, transform.rotation);
+            Instantiate(prefabShotgunBlast, gunBarrelEnd.transform.position, transform.rotation);
 
-        anim.SetTrigger("shoot");
-        elapsed = 0;
-        ammo -= 1;
-        updateAmmoHUD?.Invoke(ammo);
-
+            anim.SetTrigger("shoot");
+            elapsed = 0;
+            ammo -= 1;
+            updateAmmoHUD?.Invoke(ammo);
+        }
         return true;
     }
 }

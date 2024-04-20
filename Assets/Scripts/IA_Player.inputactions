@@ -588,6 +588,15 @@
             "id": "81f89505-7627-46a0-b2bb-b56d8ba5acd3",
             "actions": [
                 {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "4bd73e67-aa9e-4cf4-8e15-d4abd4bc7edc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "SaveOnPause",
                     "type": "Button",
                     "id": "332491dd-66d9-4b62-8a81-4200ffef9631",
@@ -612,15 +621,6 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "MultiTap(tapCount=3)",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Pause",
-                    "type": "Button",
-                    "id": "4bd73e67-aa9e-4cf4-8e15-d4abd4bc7edc",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
                     "initialStateCheck": false
                 }
             ],
@@ -682,7 +682,7 @@
                 },
                 {
                     "name": "",
-                    "id": "61dbac87-48a1-4c7f-963f-911c7dbe89a3",
+                    "id": "57f68ab8-87b0-4827-9c63-c15fd3d46538",
                     "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",

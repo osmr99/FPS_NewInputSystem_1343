@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 public class CaptionsHandler : MonoBehaviour
 {
@@ -37,6 +38,16 @@ public class CaptionsHandler : MonoBehaviour
             captions.color = new Color(captionsColor.r,captionsColor.g, captionsColor.b, (float)fading / 100 * 0.99f);
             fading--;
             captions.characterSpacing -= 0.04f;
+        }
+    }
+
+    public void OnPause()
+    {
+        captions.color = new Color(captionsColor.r, captionsColor.g, captionsColor.b, 0);
+        if (FindObjectOfType<PauseHandler>().paused == true)
+        {
+            lifetime = 0;
+            fading = 0; 
         }
     }
 }

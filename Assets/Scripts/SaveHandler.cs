@@ -6,6 +6,7 @@ using System.IO;
 using JetBrains.Annotations;
 using System;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class SaveHandler : MonoBehaviour
 {
@@ -38,7 +39,7 @@ public class SaveHandler : MonoBehaviour
     {
         if (FindObjectOfType<PlayerHUD>().isAlive)
         {
-            if(FindObjectOfType<PauseHandler>().paused == false)
+            if(FindObjectOfType<PauseHandler>().paused == false || SceneManager.sceneCount == 2)
             {
                 if (FindObjectOfType<FPSController>().equippedGuns.Count == 4)
                 {
@@ -67,7 +68,7 @@ public class SaveHandler : MonoBehaviour
     {
         if (FindObjectOfType<PlayerHUD>().isAlive)
         {
-            if (FindObjectOfType<PauseHandler>().paused == false)
+            if (FindObjectOfType<PauseHandler>().paused == false || SceneManager.sceneCount == 2)
             {
                 if (FindObjectOfType<FPSController>().equippedGuns.Count == 4)
                 {
@@ -85,7 +86,7 @@ public class SaveHandler : MonoBehaviour
                         FindObjectOfType<FPSController>().EquipGun(FindObjectOfType<FPSController>().equippedGuns[myData.weaponIndex]);
 
                         FindObjectOfType<CharacterController>().enabled = true;
-                        subtitles.displayCaptions(loaded, 50, 150, Color.green);
+                        subtitles.displayCaptions(loaded, 50, 150, Color.yellow);
                     }
                     else
                         subtitles.displayCaptions(loadFail, 150, 150, Color.red);
@@ -102,7 +103,7 @@ public class SaveHandler : MonoBehaviour
     {
         if (FindObjectOfType<PlayerHUD>().isAlive)
         {
-            if (FindObjectOfType<PauseHandler>().paused == false)
+            if (FindObjectOfType<PauseHandler>().paused == false || SceneManager.sceneCount == 2)
             {
                 if (File.Exists(path))
                 {

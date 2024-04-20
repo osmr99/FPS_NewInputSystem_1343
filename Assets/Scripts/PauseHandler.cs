@@ -6,11 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class PauseHandler : MonoBehaviour
 {
-    string path;
     public bool paused = false;
     void Start()
     {
-        path = Application.persistentDataPath + "/save.json";
+
     }
 
     public void OnPause()
@@ -26,25 +25,5 @@ public class PauseHandler : MonoBehaviour
                 FindObjectOfType<FPSController>().mouseLock = true;
             }    
         }
-    }
-
-    public void OnSaveOnPause()
-    {
-        if (FindObjectOfType<FPSController>().equippedGuns.Count == 4)
-        {
-            SaveData sd = new SaveData();
-
-            sd.playerPosition = FindObjectOfType<FPSController>().transform.position;
-            sd.playerHealth = FindObjectOfType<PlayerHUD>().health;
-            sd.healthBarFill = FindObjectOfType<PlayerHUD>().healthBar.fillAmount;
-            sd.weaponAmmo = FindObjectOfType<Gun>().ammo;
-            sd.weaponIndex = FindObjectOfType<FPSController>().gunIndex;
-
-            string jsonText = JsonUtility.ToJson(sd);
-            File.WriteAllText(path, jsonText);
-            Debug.Log("Sucessfully saved!");
-        }
-        else
-            Debug.Log("You can only save/load the game after collecting all the weapons.");
     }
 }

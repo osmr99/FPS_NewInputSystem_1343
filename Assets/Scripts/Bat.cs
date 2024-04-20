@@ -12,19 +12,21 @@ public class Bat : Gun
         if (!base.AttemptFire())
             return false;
 
-        damage = Random.Range(26, 34);
+        if (FindObjectOfType<PauseHandler>().paused == false)
+        {
+            damage = Random.Range(26, 34);
 
-        var b = Instantiate(bulletPrefab, gunBarrelEnd.transform.position, gunBarrelEnd.rotation);
-        b.GetComponent<Projectile>().Initialize(damage, 1, 0.02f, force, null); // version without special effect
+            var b = Instantiate(bulletPrefab, gunBarrelEnd.transform.position, gunBarrelEnd.rotation);
+            b.GetComponent<Projectile>().Initialize(damage, 1, 0.02f, force, null); // version without special effect
 
-        sound?.Play();
+            sound?.Play();
 
-        anim.SetTrigger("shoot");
-        elapsed = 0;
-        //ammo -= 1; Max ammo must be 1 in order to swing the bat infinite times, the ammo won't ever decrease
-        // so this can work correctly.
-        updateAmmoHUD?.Invoke(ammo);
-
+            anim.SetTrigger("shoot");
+            elapsed = 0;
+            //ammo -= 1; Max ammo must be 1 in order to swing the bat infinite times, the ammo won't ever decrease
+            // so this can work correctly.
+            updateAmmoHUD?.Invoke(ammo);
+        }
         return true;
     }
 

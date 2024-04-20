@@ -8,16 +8,17 @@ public class Blaster : Gun
     {
         if (!base.AttemptFire())
             return false;
+        if (FindObjectOfType<PauseHandler>().paused == false)
+        {
+            var b = Instantiate(bulletPrefab, gunBarrelEnd.transform.position, gunBarrelEnd.rotation);
+            b.GetComponent<Projectile>().Initialize(3, 100, 2, 5, null); // version without special effect
+                                                                         //b.GetComponent<Projectile>().Initialize(1, 100, 2, 5, DoThing); // version with special effect
 
-        var b = Instantiate(bulletPrefab, gunBarrelEnd.transform.position, gunBarrelEnd.rotation);
-        b.GetComponent<Projectile>().Initialize(3, 100, 2, 5, null); // version without special effect
-        //b.GetComponent<Projectile>().Initialize(1, 100, 2, 5, DoThing); // version with special effect
-
-        anim.SetTrigger("shoot");
-        elapsed = 0;
-        ammo -= 1;
-        updateAmmoHUD?.Invoke(ammo);
-
+            anim.SetTrigger("shoot");
+            elapsed = 0;
+            ammo -= 1;
+            updateAmmoHUD?.Invoke(ammo);
+        }
         return true;
     }
 
