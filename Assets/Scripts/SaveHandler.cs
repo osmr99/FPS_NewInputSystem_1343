@@ -45,7 +45,7 @@ public class SaveHandler : MonoBehaviour
 
         }
         else
-            Debug.Log("You tried saving on the game over but you realized there's literally no point of doing that.");
+            Debug.Log("You tried saving on the game over, but you realized there's literally no point of doing that.");
     }
 
     public void OnLoad()
@@ -71,7 +71,7 @@ public class SaveHandler : MonoBehaviour
                     Debug.Log("Sucessfully loaded!");
                 }
                 else
-                    Debug.Log("Didn't find a save file... Save using [Z] or [D-pad Down] on a controller.");
+                    Debug.Log("Couldn't find a save file... Save using [Z] or [D-pad Down] on a controller.");
             }
             else
                 Debug.Log("You can only save/load the game after collecting all the weapons.");

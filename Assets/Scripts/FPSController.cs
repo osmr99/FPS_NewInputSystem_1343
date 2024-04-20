@@ -24,6 +24,7 @@ public class FPSController : MonoBehaviour
     // private variables
     Vector3 origin;
     Vector3 velocity;
+    Gun currentGun = null;
     bool grounded;
     float xRotation;
     bool isSprinting = false;
@@ -32,7 +33,7 @@ public class FPSController : MonoBehaviour
     Vector2 looking;
 
     // public variables
-    public Gun currentGun = null;
+    
     public List<Gun> equippedGuns = new List<Gun>();
     public int gunIndex = -1;
     [SerializeField] public int damage = 20;

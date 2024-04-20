@@ -94,33 +94,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "Save",
-                    "type": "Button",
-                    "id": "360890d5-6c26-4298-84fd-479b973bd6fa",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Load",
-                    "type": "Button",
-                    "id": "4b7bfba8-65b0-4347-9117-0620b8ee5f0e",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Delete",
-                    "type": "Button",
-                    "id": "db47126e-4a0a-44ad-bec7-1b062801260a",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "MultiTap(tapCount=3)",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -486,10 +459,54 @@
                     "action": "FullHeal",
                     "isComposite": false,
                     "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UI",
+            "id": "4e44978d-ab37-44f1-a29e-3d892ad06a09",
+            "actions": [
+                {
+                    "name": "Save",
+                    "type": "Button",
+                    "id": "d6a0a403-2cb9-4f5c-a4c3-b31f4d6e55f4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
+                    "name": "Load",
+                    "type": "Button",
+                    "id": "21329f92-9582-48fc-a0d8-b467d8a7b879",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Delete",
+                    "type": "Button",
+                    "id": "9ac81ca3-a621-4be3-8e0f-7debc71e1f41",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "MultiTap(tapCount=3)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "2b186992-aa44-46a6-8c6f-28a9f4d6654f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
                     "name": "",
-                    "id": "552dbfb6-e29d-4b12-9280-6971585353d4",
+                    "id": "ce457249-545c-40bf-8b87-fc0705ffb238",
                     "path": "<Keyboard>/z",
                     "interactions": "",
                     "processors": "",
@@ -500,7 +517,7 @@
                 },
                 {
                     "name": "",
-                    "id": "a0ba0ee8-ba6c-400e-9695-fe6abc6a2cba",
+                    "id": "94a92d03-45d0-42b9-95d0-43a56cd98ba8",
                     "path": "<Gamepad>/dpad/down",
                     "interactions": "",
                     "processors": "",
@@ -511,7 +528,7 @@
                 },
                 {
                     "name": "",
-                    "id": "f64fd31f-95b1-40a9-b6f8-929f5a4eb8e1",
+                    "id": "323c1b87-7871-46e0-b3fa-ca695e627a97",
                     "path": "<Keyboard>/x",
                     "interactions": "",
                     "processors": "",
@@ -522,7 +539,7 @@
                 },
                 {
                     "name": "",
-                    "id": "1f51b976-98e8-4c40-be0e-cb796f9589a1",
+                    "id": "d5e87aba-142b-4d59-9eed-2e6de7d7f019",
                     "path": "<Gamepad>/dpad/up",
                     "interactions": "",
                     "processors": "",
@@ -533,7 +550,7 @@
                 },
                 {
                     "name": "",
-                    "id": "a9142edf-cad2-4ca4-970e-b9cac4b656d2",
+                    "id": "60523584-932b-424b-a79d-364e5af1c396",
                     "path": "<Keyboard>/y",
                     "interactions": "",
                     "processors": "",
@@ -544,12 +561,45 @@
                 },
                 {
                     "name": "",
-                    "id": "4da83cf5-54ec-4c97-9849-b7ec400c21cb",
+                    "id": "b58fed4b-03f0-478e-bdde-8121b8b76302",
                     "path": "<Gamepad>/select",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Delete",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "84899245-4e96-4664-a667-0d006487e176",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "806bfa02-b9a7-418d-b744-af380b0ee0aa",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "44e414ab-540a-4b29-af64-454ef8d2d059",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
