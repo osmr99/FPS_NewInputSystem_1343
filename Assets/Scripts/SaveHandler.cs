@@ -23,47 +23,81 @@ public class SaveHandler : MonoBehaviour
 
     public void OnSave()
     {
-        SaveData sd = new SaveData();
+        if (FindObjectOfType<PlayerHUD>().isAlive)
+        {
+            SaveData sd = new SaveData();
 
-        sd.playerPosition = FindObjectOfType<FPSController>().transform.position;
-        sd.playerHealth = FindObjectOfType<PlayerHUD>().health;
-        sd.healthBarFill = FindObjectOfType<PlayerHUD>().healthBar.fillAmount;
-        sd.weaponAmmo = FindObjectOfType<Gun>().ammo;
-        sd.weaponIndex = FindObjectOfType<FPSController>().gunIndex;
+            sd.playerPosition = FindObjectOfType<FPSController>().transform.position;
+            sd.playerHealth = FindObjectOfType<PlayerHUD>().health;
+            sd.healthBarFill = FindObjectOfType<PlayerHUD>().healthBar.fillAmount;
+            sd.weaponAmmo = FindObjectOfType<Gun>().ammo;
+            sd.weaponIndex = FindObjectOfType<FPSController>().gunIndex;
 
-        string jsonText = JsonUtility.ToJson(sd);
-        File.WriteAllText(path, jsonText);
-        Debug.Log("Sucessfully saved!");
+            string jsonText = JsonUtility.ToJson(sd);
+            File.WriteAllText(path, jsonText);
+            Debug.Log("Sucessfully saved!");
+        }
+        else
+            Debug.Log("You tried saving on the game over but you realized there's literally no point of doing that.");
     }
 
     public void OnLoad()
     {
-        if (File.Exists(path))
+        if (FindObjectOfType<PlayerHUD>().isAlive)
         {
-            string saveText = File.ReadAllText(path);
-            SaveData myData = JsonUtility.FromJson<SaveData>(saveText);
-            FindObjectOfType<CharacterController>().enabled = false;
+            if (File.Exists(path))
+            {
+                string saveText = File.ReadAllText(path);
+                SaveData myData = JsonUtility.FromJson<SaveData>(saveText);
+                FindObjectOfType<CharacterController>().enabled = false;
 
-            FindObjectOfType<FPSController>().transform.position = myData.playerPosition;
-            FindObjectOfType<PlayerHUD>().health = myData.playerHealth;
-            FindObjectOfType<PlayerHUD>().healthBar.fillAmount = myData.healthBarFill;
-            FindObjectOfType<Gun>().ammo = myData.weaponAmmo;
-            FindObjectOfType<Gun>().updateAmmoHUD?.Invoke(myData.weaponAmmo);
-            FindObjectOfType<FPSController>().EquipGun(FindObjectOfType<FPSController>().equippedGuns[myData.weaponIndex]);
+                FindObjectOfType<FPSController>().transform.position = myData.playerPosition;
+                FindObjectOfType<PlayerHUD>().health = myData.playerHealth;
+                FindObjectOfType<PlayerHUD>().healthBar.fillAmount = myData.healthBarFill;
+                if (FindObjectOfType<FPSController>().currentGun == null && myData.weaponIndex > 0)
+                {
+                    Debug.Log("Hey, before loading this save, you didn't have any guns. So by default, yours guns won't load here UNLESS you pick them up and THEN save.");
+                    FindObjectOfType<CharacterController>().enabled = true;
+                    Debug.Log("On the other hand.. your health and position loaded successfully!");
+                }
+                else if (FindObjectOfType<FPSController>().currentGun == null)
+                {
+                    FindObjectOfType<CharacterController>().enabled = true;
+                    Debug.Log("Sucessfully loaded!");
+                }
+                else
+                {
+                    FindObjectOfType<Gun>().ammo = myData.weaponAmmo;
+                    FindObjectOfType<Gun>().updateAmmoHUD?.Invoke(myData.weaponAmmo);
+                    FindObjectOfType<FPSController>().EquipGun(FindObjectOfType<FPSController>().equippedGuns[myData.weaponIndex]);
+                    FindObjectOfType<CharacterController>().enabled = true;
+                    Debug.Log("Sucessfully loaded!");
 
-            FindObjectOfType<CharacterController>().enabled = true;
-            Debug.Log("Sucessfully loaded!");
+                }
+            }
+            else
+            {
+                Debug.Log("Didn't find a save file... Save using [Z] or [D-pad Down] on a controller.");
+            }
         }
         else
-        {
-            Debug.Log("Didn't find a save file... Save using [Z] or [D-pad Down] on a controller.");
-        }
+            Debug.Log("You can't load on the game over :(");
     }
 
     public void OnDelete()
     {
-        File.Delete(path);
-        Debug.Log("Save file deleted! Be careful now!!");
+        if (FindObjectOfType<PlayerHUD>().isAlive)
+        {
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+                Debug.Log("Save file deleted! Be careful now!!");
+            }
+            else
+                Debug.Log("No save file to delete.");
+        }
+        else
+            Debug.Log("Not a good idea to delete your save right now.");
     }
 }
 public class SaveData
@@ -72,5 +106,6 @@ public class SaveData
     public float playerHealth;
     public float healthBarFill;
     public int weaponIndex;
+    public int gunsCount;
     public int weaponAmmo;
 }

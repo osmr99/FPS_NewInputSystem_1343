@@ -17,7 +17,7 @@ public class PlayerHUD : MonoBehaviour
 
     //int ammo = 0;
     //int maxAmmo = 0;
-    bool isAlive = true;
+    public bool isAlive = true;
 
     public UnityEvent gameOver;
     // Start is called before the first frame update

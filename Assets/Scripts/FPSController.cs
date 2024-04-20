@@ -26,13 +26,13 @@ public class FPSController : MonoBehaviour
     Vector3 velocity;
     bool grounded;
     float xRotation;
-    Gun currentGun = null;
     bool isSprinting = false;
     bool isFiringHold = false;
     Vector2 movement;
     Vector2 looking;
 
     // public variables
+    public Gun currentGun = null;
     public List<Gun> equippedGuns = new List<Gun>();
     public int gunIndex = 0;
     [SerializeField] public int damage = 20;
@@ -98,7 +98,8 @@ public class FPSController : MonoBehaviour
 
         velocity.y += gravity * Time.deltaTime;
 
-        controller.Move(velocity * Time.deltaTime);
+        if(FindObjectOfType<PlayerHUD>().isAlive)
+            controller.Move(velocity * Time.deltaTime);
     }
 
     void Look()
@@ -356,23 +357,25 @@ public class FPSController : MonoBehaviour
 
     public void OnInventoryScroll(InputValue value)
     {
-        if (equippedGuns.Count == 0)
-            return;
-        if (value.Get<float>() > 0)
+        if (equippedGuns.Count > 1)
         {
-            gunIndex++;
-            if (gunIndex > equippedGuns.Count - 1)
-                gunIndex = 0;
+            if (value.Get<float>() > 0)
+            {
+                gunIndex++;
+                if (gunIndex > equippedGuns.Count - 1)
+                    gunIndex = 0;
 
-            EquipGun(equippedGuns[gunIndex]);
-        }
-        else if (value.Get<float>() < 0)
-        {
-            gunIndex--;
-            if (gunIndex < 0)
-                gunIndex = equippedGuns.Count - 1;
+                EquipGun(equippedGuns[gunIndex]);
+            }
+            else if (value.Get<float>() < 0)
+            {
+                gunIndex--;
+                if (gunIndex < 0)
+                    gunIndex = equippedGuns.Count - 1;
 
-            EquipGun(equippedGuns[gunIndex]);
+                EquipGun(equippedGuns[gunIndex]);
+            }
         }
+
     }
 }
