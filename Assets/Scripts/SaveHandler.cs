@@ -25,6 +25,7 @@ public class SaveHandler : MonoBehaviour
             sd.playerPosition = FindObjectOfType<FPSController>().transform.position;
             sd.playerHealth = FindObjectOfType<PlayerHUD>().health;
             sd.healthBarFill = FindObjectOfType<PlayerHUD>().healthBar.fillAmount;
+            sd.weaponAmmo = FindObjectOfType<Gun>().ammoForSave;
 
             string jsonText = JsonUtility.ToJson(sd);
             File.WriteAllText(path, jsonText);
@@ -40,6 +41,7 @@ public class SaveHandler : MonoBehaviour
             FindObjectOfType<FPSController>().transform.position = myData.playerPosition;
             FindObjectOfType<PlayerHUD>().health = myData.playerHealth;
             FindObjectOfType<PlayerHUD>().healthBar.fillAmount = myData.healthBarFill;
+            FindObjectOfType<Gun>().ammoForSave = myData.weaponAmmo;
 
             FindObjectOfType<CharacterController>().enabled = true;
             Debug.Log("Sucessfully loaded!");
@@ -51,4 +53,5 @@ public class SaveData
     public Vector3 playerPosition;
     public float playerHealth;
     public float healthBarFill;
+    public int weaponAmmo;
 }

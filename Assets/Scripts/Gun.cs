@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 // gun base class
 public class Gun : MonoBehaviour
@@ -21,6 +22,10 @@ public class Gun : MonoBehaviour
     protected int ammo;
     protected float elapsed = 0;
 
+    public int ammoForSave;
+    public UnityEvent<int> updateAmmoHUD;
+    public UnityEvent<int> updateMaxAmmoHUD;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +37,8 @@ public class Gun : MonoBehaviour
     {
         elapsed += Time.deltaTime;
 
+        ammoForSave = ammo;
+
         // cheat code to refill ammo
         //if (Input.GetKeyDown(KeyCode.R))
         //{
@@ -42,6 +49,8 @@ public class Gun : MonoBehaviour
     public virtual void Equip(FPSController p)
     {
         player = p;
+        updateAmmoHUD?.Invoke(ammo);
+        updateMaxAmmoHUD?.Invoke(maxAmmo);
     }
 
     public virtual void Unequip() { }
@@ -65,7 +74,7 @@ public class Gun : MonoBehaviour
         {
             return false;
         }
-
+        
         return true;
     }
 
@@ -77,8 +86,8 @@ public class Gun : MonoBehaviour
     public virtual void AddAmmo(int amount)
     {
         ammo += amount;
-
         if (ammo > maxAmmo)
             ammo = maxAmmo;
+        updateAmmoHUD?.Invoke(ammo);
     }
 }

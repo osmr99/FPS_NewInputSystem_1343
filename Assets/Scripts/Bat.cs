@@ -23,6 +23,7 @@ public class Bat : Gun
         elapsed = 0;
         //ammo -= 1; Max ammo must be 1 in order to swing the bat infinite times, the ammo won't ever decrease
         // so this can work correctly.
+        updateAmmoHUD?.Invoke(ammo);
 
         return true;
     }

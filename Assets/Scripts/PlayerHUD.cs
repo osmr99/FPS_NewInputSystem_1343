@@ -15,8 +15,8 @@ public class PlayerHUD : MonoBehaviour
     [SerializeField] public float health = 100;
     float maxHealth = 100;
 
-    int ammo = 10;
-    int maxAmmo = 10;
+    //int ammo = 0;
+    //int maxAmmo = 0;
     bool isAlive = true;
 
     public UnityEvent gameOver;
@@ -24,14 +24,20 @@ public class PlayerHUD : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<FPSController>();
-        currentAmmoText.text = ammo.ToString();
-        maxAmmoText.text = maxAmmo.ToString();
+        //currentAmmoText.text = ammo.ToString();
+        //maxAmmoText.text = maxAmmo.ToString();
     }
 
     public void updateAmmo(int bullets)
     {
         if (isAlive)
             currentAmmoText.text = bullets.ToString();
+    }
+
+    public void updateMaxAmmo(int max)
+    {
+        if (isAlive)
+            maxAmmoText.text = max.ToString();
     }
 
     public void updateHealth(int value)

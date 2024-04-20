@@ -211,7 +211,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 00
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -345,7 +345,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 00
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5082,6 +5082,13 @@ MonoBehaviour:
   maxAmmo: 10
   timeBetweenShots: 0.1
   isAutomatic: 0
+  ammoForSave: 0
+  updateAmmoHUD:
+    m_PersistentCalls:
+      m_Calls: []
+  updateMaxAmmoHUD:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!95 &1755030702
 Animator:
   serializedVersion: 5
@@ -6500,6 +6507,58 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shotgun Pickup
       objectReference: {fileID: 0}
+    - target: {fileID: 2152696547904546279, guid: 1f024e99338ca8345b3bf4a81a568865, type: 3}
+      propertyPath: updateAmmoHUD.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152696547904546279, guid: 1f024e99338ca8345b3bf4a81a568865, type: 3}
+      propertyPath: updateMaxAmmoHUD.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152696547904546279, guid: 1f024e99338ca8345b3bf4a81a568865, type: 3}
+      propertyPath: updateAmmoHUD.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1681447824}
+    - target: {fileID: 2152696547904546279, guid: 1f024e99338ca8345b3bf4a81a568865, type: 3}
+      propertyPath: updateMaxAmmoHUD.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152696547904546279, guid: 1f024e99338ca8345b3bf4a81a568865, type: 3}
+      propertyPath: updateAmmoHUD.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152696547904546279, guid: 1f024e99338ca8345b3bf4a81a568865, type: 3}
+      propertyPath: updateMaxAmmoHUD.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1681447824}
+    - target: {fileID: 2152696547904546279, guid: 1f024e99338ca8345b3bf4a81a568865, type: 3}
+      propertyPath: updateAmmoHUD.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: updateAmmo
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152696547904546279, guid: 1f024e99338ca8345b3bf4a81a568865, type: 3}
+      propertyPath: updateMaxAmmoHUD.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152696547904546279, guid: 1f024e99338ca8345b3bf4a81a568865, type: 3}
+      propertyPath: updateMaxAmmoHUD.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: updateMaxAmmo
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152696547904546279, guid: 1f024e99338ca8345b3bf4a81a568865, type: 3}
+      propertyPath: updateAmmoHUD.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerHUD, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152696547904546279, guid: 1f024e99338ca8345b3bf4a81a568865, type: 3}
+      propertyPath: updateMaxAmmoHUD.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerHUD, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152696547904546279, guid: 1f024e99338ca8345b3bf4a81a568865, type: 3}
+      propertyPath: updateAmmoHUD.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152696547904546279, guid: 1f024e99338ca8345b3bf4a81a568865, type: 3}
+      propertyPath: updateMaxAmmoHUD.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8361133666226167390, guid: 1f024e99338ca8345b3bf4a81a568865, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.36
@@ -6743,8 +6802,60 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2843342591312473204, guid: db49c5e1d46c9404aaf3e22c2a314ba1, type: 3}
+      propertyPath: maxAmmo
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843342591312473204, guid: db49c5e1d46c9404aaf3e22c2a314ba1, type: 3}
       propertyPath: timeBetweenShots
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843342591312473204, guid: db49c5e1d46c9404aaf3e22c2a314ba1, type: 3}
+      propertyPath: updateAmmoHUD.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843342591312473204, guid: db49c5e1d46c9404aaf3e22c2a314ba1, type: 3}
+      propertyPath: updateMaxAmmoHUD.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843342591312473204, guid: db49c5e1d46c9404aaf3e22c2a314ba1, type: 3}
+      propertyPath: updateAmmoHUD.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1681447824}
+    - target: {fileID: 2843342591312473204, guid: db49c5e1d46c9404aaf3e22c2a314ba1, type: 3}
+      propertyPath: updateAmmoHUD.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843342591312473204, guid: db49c5e1d46c9404aaf3e22c2a314ba1, type: 3}
+      propertyPath: updateMaxAmmoHUD.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1681447824}
+    - target: {fileID: 2843342591312473204, guid: db49c5e1d46c9404aaf3e22c2a314ba1, type: 3}
+      propertyPath: updateAmmoHUD.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: updateAmmo
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843342591312473204, guid: db49c5e1d46c9404aaf3e22c2a314ba1, type: 3}
+      propertyPath: updateMaxAmmoHUD.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843342591312473204, guid: db49c5e1d46c9404aaf3e22c2a314ba1, type: 3}
+      propertyPath: updateMaxAmmoHUD.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: updateMaxAmmo
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843342591312473204, guid: db49c5e1d46c9404aaf3e22c2a314ba1, type: 3}
+      propertyPath: updateAmmoHUD.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerHUD, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843342591312473204, guid: db49c5e1d46c9404aaf3e22c2a314ba1, type: 3}
+      propertyPath: updateMaxAmmoHUD.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerHUD, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843342591312473204, guid: db49c5e1d46c9404aaf3e22c2a314ba1, type: 3}
+      propertyPath: updateAmmoHUD.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843342591312473204, guid: db49c5e1d46c9404aaf3e22c2a314ba1, type: 3}
+      propertyPath: updateMaxAmmoHUD.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6759,6 +6870,62 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2325326940735632134, guid: 5b5975288097d024bb8d24f481a16620, type: 3}
+      propertyPath: timeBetweenShots
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325326940735632134, guid: 5b5975288097d024bb8d24f481a16620, type: 3}
+      propertyPath: updateAmmoHUD.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325326940735632134, guid: 5b5975288097d024bb8d24f481a16620, type: 3}
+      propertyPath: updateMaxAmmoHUD.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325326940735632134, guid: 5b5975288097d024bb8d24f481a16620, type: 3}
+      propertyPath: updateAmmoHUD.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325326940735632134, guid: 5b5975288097d024bb8d24f481a16620, type: 3}
+      propertyPath: updateAmmoHUD.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1681447824}
+    - target: {fileID: 2325326940735632134, guid: 5b5975288097d024bb8d24f481a16620, type: 3}
+      propertyPath: updateAmmoHUD.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325326940735632134, guid: 5b5975288097d024bb8d24f481a16620, type: 3}
+      propertyPath: updateMaxAmmoHUD.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1681447824}
+    - target: {fileID: 2325326940735632134, guid: 5b5975288097d024bb8d24f481a16620, type: 3}
+      propertyPath: updateAmmoHUD.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: updateAmmo
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325326940735632134, guid: 5b5975288097d024bb8d24f481a16620, type: 3}
+      propertyPath: updateMaxAmmoHUD.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325326940735632134, guid: 5b5975288097d024bb8d24f481a16620, type: 3}
+      propertyPath: updateMaxAmmoHUD.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: updateMaxAmmo
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325326940735632134, guid: 5b5975288097d024bb8d24f481a16620, type: 3}
+      propertyPath: updateAmmoHUD.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerHUD, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325326940735632134, guid: 5b5975288097d024bb8d24f481a16620, type: 3}
+      propertyPath: updateMaxAmmoHUD.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerHUD, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325326940735632134, guid: 5b5975288097d024bb8d24f481a16620, type: 3}
+      propertyPath: updateAmmoHUD.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325326940735632134, guid: 5b5975288097d024bb8d24f481a16620, type: 3}
+      propertyPath: updateMaxAmmoHUD.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5907037542295338912, guid: 5b5975288097d024bb8d24f481a16620, type: 3}
       propertyPath: m_Name
       value: Blaster Pickup
@@ -6819,6 +6986,54 @@ PrefabInstance:
     - target: {fileID: 586458353194441544, guid: 511e82ff3e42d4146abec906b3e2a917, type: 3}
       propertyPath: m_Volume
       value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 2658735534049548370, guid: 511e82ff3e42d4146abec906b3e2a917, type: 3}
+      propertyPath: updateAmmoHUD.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2658735534049548370, guid: 511e82ff3e42d4146abec906b3e2a917, type: 3}
+      propertyPath: updateMaxAmmoHUD.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2658735534049548370, guid: 511e82ff3e42d4146abec906b3e2a917, type: 3}
+      propertyPath: updateAmmoHUD.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1681447824}
+    - target: {fileID: 2658735534049548370, guid: 511e82ff3e42d4146abec906b3e2a917, type: 3}
+      propertyPath: updateAmmoHUD.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2658735534049548370, guid: 511e82ff3e42d4146abec906b3e2a917, type: 3}
+      propertyPath: updateMaxAmmoHUD.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1681447824}
+    - target: {fileID: 2658735534049548370, guid: 511e82ff3e42d4146abec906b3e2a917, type: 3}
+      propertyPath: updateAmmoHUD.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: updateAmmo
+      objectReference: {fileID: 0}
+    - target: {fileID: 2658735534049548370, guid: 511e82ff3e42d4146abec906b3e2a917, type: 3}
+      propertyPath: updateMaxAmmoHUD.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2658735534049548370, guid: 511e82ff3e42d4146abec906b3e2a917, type: 3}
+      propertyPath: updateMaxAmmoHUD.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: updateMaxAmmo
+      objectReference: {fileID: 0}
+    - target: {fileID: 2658735534049548370, guid: 511e82ff3e42d4146abec906b3e2a917, type: 3}
+      propertyPath: updateAmmoHUD.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerHUD, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2658735534049548370, guid: 511e82ff3e42d4146abec906b3e2a917, type: 3}
+      propertyPath: updateMaxAmmoHUD.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerHUD, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2658735534049548370, guid: 511e82ff3e42d4146abec906b3e2a917, type: 3}
+      propertyPath: updateAmmoHUD.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2658735534049548370, guid: 511e82ff3e42d4146abec906b3e2a917, type: 3}
+      propertyPath: updateMaxAmmoHUD.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5370053715891625287, guid: 511e82ff3e42d4146abec906b3e2a917, type: 3}
       propertyPath: m_Name

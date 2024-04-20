@@ -16,6 +16,7 @@ public class AutomaticWeapon : Gun
         anim.SetTrigger("shoot");
         elapsed = 0;
         ammo -= 1;
+        updateAmmoHUD?.Invoke(ammo);
 
         return true;
     }
