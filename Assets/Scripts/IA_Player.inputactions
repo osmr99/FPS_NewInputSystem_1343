@@ -551,7 +551,7 @@
                 {
                     "name": "",
                     "id": "60523584-932b-424b-a79d-364e5af1c396",
-                    "path": "<Keyboard>/y",
+                    "path": "<Keyboard>/v",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -600,6 +600,74 @@
                     "processors": "",
                     "groups": "",
                     "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "GamepadOnly",
+            "id": "81f89505-7627-46a0-b2bb-b56d8ba5acd3",
+            "actions": [
+                {
+                    "name": "SaveOnPause",
+                    "type": "Button",
+                    "id": "332491dd-66d9-4b62-8a81-4200ffef9631",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LoadOnPause",
+                    "type": "Button",
+                    "id": "315b9445-2051-4301-bcbe-5cf41e5ed381",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "DeleteOnPause",
+                    "type": "Button",
+                    "id": "ecf624d4-5930-45ca-b615-23e32573ab36",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "MultiTap(tapCount=3)",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "8c78e18f-7170-4c5a-96f0-4ddf8fec9845",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SaveOnPause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "de1bb057-47ec-4e76-a548-57b3bee0a6be",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LoadOnPause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "beed8fc2-d2fb-4b8a-a291-430396bb1463",
+                    "path": "<Gamepad>/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DeleteOnPause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
