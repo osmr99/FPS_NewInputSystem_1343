@@ -39,7 +39,6 @@ public class PauseMenu : MonoBehaviour
     public void OnSaveOnPause()
     {
         save.OnSave();
-        Debug.Log("saved");
         pause.OnPause();
         
     }
@@ -47,7 +46,6 @@ public class PauseMenu : MonoBehaviour
     public void OnLoadOnPause()
     {
         save.OnLoad();
-        Debug.Log("loaded");
         pause.OnPause();
         
     }
@@ -55,7 +53,6 @@ public class PauseMenu : MonoBehaviour
     public void OnDeleteOnPause()
     {
         save.OnDelete();
-        Debug.Log("deleted");
         pause.OnPause();
         
     }
