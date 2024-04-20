@@ -21,7 +21,7 @@ public class SaveHandler : MonoBehaviour
     string cannotLoad = "You can't load on the game over :(";
     string saveDeleted = "Save file deleted! Be careful now!!";
     string deleteFail = "No save file to delete.";
-    string badIdea = "Not a good idea to delete your save right now.";
+    string badIdea = "Not a good idea to mess with your save right now.";
 
     // Start is called before the first frame update
     void Start()
