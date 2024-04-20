@@ -109,26 +109,26 @@ public class FPSController : MonoBehaviour
 
     void HandleSwitchGun()
     {
-        if (equippedGuns.Count == 0)
-            return;
+        //if (equippedGuns.Count == 0)
+        //    return;
 
-        if(Input.GetAxis("Mouse ScrollWheel") > 0) // How
-        {
-            gunIndex++;
-            if (gunIndex > equippedGuns.Count - 1)
-                gunIndex = 0;
+        //if(Input.GetAxis("Mouse ScrollWheel") > 0) // How
+        //{
+        //    gunIndex++;
+        //    if (gunIndex > equippedGuns.Count - 1)
+        //        gunIndex = 0;
 
-            EquipGun(equippedGuns[gunIndex]);
-        }
+        //    EquipGun(equippedGuns[gunIndex]);
+        //}
 
-        else if (Input.GetAxis("Mouse ScrollWheel") < 0)
-        {
-            gunIndex--;
-            if (gunIndex < 0)
-                gunIndex = equippedGuns.Count - 1;
+        //else if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        //{
+        //    gunIndex--;
+        //    if (gunIndex < 0)
+        //        gunIndex = equippedGuns.Count - 1;
 
-            EquipGun(equippedGuns[gunIndex]);
-        }
+        //    EquipGun(equippedGuns[gunIndex]);
+        //}
     }
 
     /*void FireGun()
@@ -342,5 +342,27 @@ public class FPSController : MonoBehaviour
     public void OnLook(InputValue value)
     {
         looking = value.Get<Vector2>();
+    }
+
+    public void OnInventoryScroll(InputValue value)
+    {
+        if (equippedGuns.Count == 0)
+            return;
+        if (value.Get<float>() > 0)
+        {
+            gunIndex++;
+            if (gunIndex > equippedGuns.Count - 1)
+                gunIndex = 0;
+
+            EquipGun(equippedGuns[gunIndex]);
+        }
+        else if (value.Get<float>() < 0)
+        {
+            gunIndex--;
+            if (gunIndex < 0)
+                gunIndex = equippedGuns.Count - 1;
+
+            EquipGun(equippedGuns[gunIndex]);
+        }
     }
 }
