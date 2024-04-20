@@ -19,10 +19,10 @@ public class Gun : MonoBehaviour
     [SerializeField] protected bool isAutomatic = false;
 
     // private variables
-    protected int ammo;
+    //protected int ammo;
     protected float elapsed = 0;
 
-    public int ammoForSave;
+    public int ammo;
     public UnityEvent<int> updateAmmoHUD;
     public UnityEvent<int> updateMaxAmmoHUD;
 
@@ -36,8 +36,6 @@ public class Gun : MonoBehaviour
     void Update()
     {
         elapsed += Time.deltaTime;
-
-        ammoForSave = ammo;
 
         // cheat code to refill ammo
         //if (Input.GetKeyDown(KeyCode.R))

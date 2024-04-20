@@ -18,21 +18,27 @@ public class SaveHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Keyboard.current.zKey.wasPressedThisFrame)
-        {
-            SaveData sd = new SaveData();
 
-            sd.playerPosition = FindObjectOfType<FPSController>().transform.position;
-            sd.playerHealth = FindObjectOfType<PlayerHUD>().health;
-            sd.healthBarFill = FindObjectOfType<PlayerHUD>().healthBar.fillAmount;
-            sd.weaponAmmo = FindObjectOfType<Gun>().ammoForSave;
+    }
 
-            string jsonText = JsonUtility.ToJson(sd);
-            File.WriteAllText(path, jsonText);
-            Debug.Log("Sucessfully saved!");
-        }
+    public void OnSave()
+    {
+        SaveData sd = new SaveData();
 
-        if (Keyboard.current.xKey.wasPressedThisFrame)
+        sd.playerPosition = FindObjectOfType<FPSController>().transform.position;
+        sd.playerHealth = FindObjectOfType<PlayerHUD>().health;
+        sd.healthBarFill = FindObjectOfType<PlayerHUD>().healthBar.fillAmount;
+        sd.weaponAmmo = FindObjectOfType<Gun>().ammo;
+        sd.weaponIndex = FindObjectOfType<FPSController>().gunIndex;
+
+        string jsonText = JsonUtility.ToJson(sd);
+        File.WriteAllText(path, jsonText);
+        Debug.Log("Sucessfully saved!");
+    }
+
+    public void OnLoad()
+    {
+        if (File.Exists(path))
         {
             string saveText = File.ReadAllText(path);
             SaveData myData = JsonUtility.FromJson<SaveData>(saveText);
@@ -41,11 +47,23 @@ public class SaveHandler : MonoBehaviour
             FindObjectOfType<FPSController>().transform.position = myData.playerPosition;
             FindObjectOfType<PlayerHUD>().health = myData.playerHealth;
             FindObjectOfType<PlayerHUD>().healthBar.fillAmount = myData.healthBarFill;
-            FindObjectOfType<Gun>().ammoForSave = myData.weaponAmmo;
+            FindObjectOfType<Gun>().ammo = myData.weaponAmmo;
+            FindObjectOfType<Gun>().updateAmmoHUD?.Invoke(myData.weaponAmmo);
+            FindObjectOfType<FPSController>().EquipGun(FindObjectOfType<FPSController>().equippedGuns[myData.weaponIndex]);
 
             FindObjectOfType<CharacterController>().enabled = true;
             Debug.Log("Sucessfully loaded!");
         }
+        else
+        {
+            Debug.Log("Didn't find a save file... Save using [Z] or [D-pad Down] on a controller.");
+        }
+    }
+
+    public void OnDelete()
+    {
+        File.Delete(path);
+        Debug.Log("Save file deleted! Be careful now!!");
     }
 }
 public class SaveData
@@ -53,5 +71,6 @@ public class SaveData
     public Vector3 playerPosition;
     public float playerHealth;
     public float healthBarFill;
+    public int weaponIndex;
     public int weaponAmmo;
 }

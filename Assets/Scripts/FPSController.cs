@@ -26,14 +26,15 @@ public class FPSController : MonoBehaviour
     Vector3 velocity;
     bool grounded;
     float xRotation;
-    List<Gun> equippedGuns = new List<Gun>();
-    int gunIndex = 0;
     Gun currentGun = null;
     bool isSprinting = false;
     bool isFiringHold = false;
     Vector2 movement;
     Vector2 looking;
 
+    // public variables
+    public List<Gun> equippedGuns = new List<Gun>();
+    public int gunIndex = 0;
     [SerializeField] public int damage = 20;
 
     // properties
@@ -198,7 +199,7 @@ public class FPSController : MonoBehaviour
         //}
     }
 
-    void EquipGun(Gun g)
+    public void EquipGun(Gun g)
     {
         // disable current gun, if there is one
         currentGun?.Unequip();
